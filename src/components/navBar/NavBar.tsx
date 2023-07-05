@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import blueLink from "../../assets/blue-link.svg";
 import blueline from "../../assets/blue-line.svg";
 import menu from "../../assets/menu.svg";
@@ -11,11 +12,15 @@ function NavBar({}: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleResize = () => {
-    setIsSmallScreen(window.innerWidth <= 900);
+    setIsSmallScreen(window.innerWidth <= 940);
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -58,27 +63,35 @@ function NavBar({}: Props) {
           } overflow-hidden text-left`}>
           <ul className="bg-primaryTextColorBlue text-white font-semibold">
             <li className="py-2 pl-3">
-              <Link className="text-white " to="/">
+              <a className="text-white " href="/">
                 My Urls
-              </Link>
+             </a>
             </li>
-            <li className="py-2 pl-3">Features</li>
-            <li className="py-2 pl-3">Pricing</li>
-            <li className="py-2 pl-3">Analytics</li>
-            <li className="py-2 pl-3">FAQs</li>
+            <li className="py-2 pl-3">
+              <a href="#features">Features</a>
+            </li>
+            <li className="py-2 pl-3">
+              <a href="#sub">Pricing</a>
+            </li>
+            <li className="py-2 pl-3">
+              <a href="#linkmodal">Analytics</a>
+            </li>
+            <li className="py-2 pl-3">
+              <a href="#faq">FAQs</a>
+            </li>
             <hr />
-            <li className="py-3 pl-3">
-              <Link className="text-white" to="/">
+            <li className="py-3 pl-3" onClick={handleLinkClick}>
+              <a className="text-white" href="/login">
                 Log in
-              </Link>
+             </a>
             </li>
 
-            <li className="py-3 pl-3">
-              <Link
+            <li className="py-3 pl-3" onClick={handleLinkClick}>
+              <a
                 className="border-0 bg-white px-3 py-2 rounded-full text-primaryTextColorBlue"
-                to="/">
+                href="/">
                 Try for free
-              </Link>
+             </a>
             </li>
           </ul>
         </div>
@@ -97,38 +110,38 @@ function NavBar({}: Props) {
           <div>
             <ul className="flex gap-x-10 font-semibold text-lg">
               <li className="text-primaryTextColorBlue group transition duration-300">
-                <Link to="/">My Urls</Link>
+                <a href="/">My Urls</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <Link to="/">Feature</Link>
+                <a href="#feature">Feature</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <Link to="/">Pricing</Link>
+                <a href="#sub">Pricing</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <Link to="/">Analytics</Link>
+                <a href="/">Analytics</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <Link to="/">FAQs</Link>
+                <a href="#faqs">FAQs</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
 
               <li className="group transition duration-300">
-                <Link className="text-primaryTextColorBlue" to="/">
+                <a className="text-primaryTextColorBlue" href="/login">
                   Log in
-                </Link>
+               </a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li>
-                <Link
+                <a
                   className="border-0 bg-primaryTextColorBlue px-3 py-2 rounded-full text-white"
-                  to="/">
+                  href="#linkmodal">
                   Try for free
-                </Link>
+               </a>
               </li>
             </ul>
           </div>

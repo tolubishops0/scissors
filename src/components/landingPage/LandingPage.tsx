@@ -36,7 +36,7 @@ function LandingPage({}: Props) {
       <div className="mt-4 md:mt-6 lg:mt-10 m-auto flex items-center justify-between max-w-[12rem] md:max-w-[16rem]">
         <Link
           className="border-0 font-semibold text-xs bg-primaryTextColorBlue py-2 px-6 md:py-3 md:px-8 rounded-full text-white"
-          to="/">
+          to="/signup">
           Sign Up
         </Link>
         <Link

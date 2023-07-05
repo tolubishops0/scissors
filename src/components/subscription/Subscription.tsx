@@ -28,7 +28,7 @@ function Subscription({}: Props) {
         <div className="card border-[1.5px] hover:border-0 border-secTextColorBlue rounded-lg shadow-custom p-3 hover:bg-gradient-card hover:text-white hover:shadow-lg transition duration-500 ease-in hover:scale-125 hover:z-20">
           <div className="lg:mt-2 lg:space-y-3">
             <h1 className="text-xl font-semibold">Basic</h1>
-            <h1 className="text-4xl font-bold">Free</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">Free</h1>
             <p>Free plan for all users</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
@@ -104,7 +104,7 @@ function Subscription({}: Props) {
         <div className="card border-[1.5px] hover:border-0 border-secTextColorBlue rounded-lg shadow-md p-3 hover:bg-gradient-card hover:text-white hover:shadow-lg transition duration-500 ease-in md:z-10 hover:scale-125 hover:z-20">
           <div className="lg:mt-2 lg:space-y-3">
             <h1 className="text-xl font-semibold">Professional</h1>
-            <h1 className="text-4xl font-bold">$15/month</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">$15/month</h1>
             <p>Ideal for business creators</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
@@ -179,7 +179,7 @@ function Subscription({}: Props) {
         <div className="card border-[1.5px] hover:border-0 border-secTextColorBlue rounded-lg shadow-md p-3 hover:bg-gradient-card hover:text-white hover:shadow-lg transition duration-500 ease-in hover:scale-125 hover:z-20">
           <div className="lg:mt-2 lg:space-y-3">
             <h1 className="text-xl font-semibold">Teams</h1>
-            <h1 className="text-4xl font-bold">$25/month</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">$25/month</h1>
             <p>Share with up to 10 users</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
