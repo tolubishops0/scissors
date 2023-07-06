@@ -32,7 +32,7 @@ function Subscription({}: Props) {
             <p>Free plan for all users</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
-            <p className="flex items-center">
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -44,9 +44,9 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />
               <p className="text-sm">Unpmited URL Shortening</p>
-            </p>
+            </li>
 
-            <p className="flex items-center">
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -58,8 +58,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Basic pnk Analytics</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -71,8 +71,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Customizable Short pnks</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -84,8 +84,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Standard Support</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -97,7 +97,7 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Ad-supported</p>
-            </p>
+            </li>
           </ul>
         </div>
 
@@ -108,7 +108,7 @@ function Subscription({}: Props) {
             <p>Ideal for business creators</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
-            <p className="flex items-center">
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -120,8 +120,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Enhanced Link Analytics</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -133,8 +133,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Custom Branded Domains</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -146,8 +146,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Advanced Link Customization</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -159,8 +159,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Priority Support</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -172,7 +172,7 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Ad-free Experience</p>
-            </p>
+            </li>
           </ul>
         </div>
 
@@ -183,7 +183,7 @@ function Subscription({}: Props) {
             <p>Share with up to 10 users</p>
           </div>
           <ul className="mt-6 space-y-2 lg:space-y-5">
-            <p className="flex items-center">
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -195,8 +195,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Team Collaboration</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -208,8 +208,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">User Roles and Permissions</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -221,8 +221,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Enhanced Security</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -234,8 +234,8 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">API Access</p>
-            </p>
-            <p className="flex items-center">
+            </li>
+            <li className="flex items-center">
               <img
                 src={bluecheck}
                 alt="check"
@@ -247,7 +247,7 @@ function Subscription({}: Props) {
                 className="w-4 h-4 mr-2 checkmark white"
               />{" "}
               <p className="text-sm">Dedicated Account Manager</p>
-            </p>
+            </li>
           </ul>
         </div>
       </div>

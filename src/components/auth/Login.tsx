@@ -58,8 +58,22 @@ function Login({}: Props) {
         navigate('/urlpage')
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(getErrorMessage(error));
       });
+  };
+
+  const getErrorMessage = (error: any) => {
+    //customize the error messages based on the error code
+    switch (error.code) {
+      case "auth/invalid-email":
+        return "Invalid email address.";
+      case "auth/user-not-found":
+        return "User not found.";
+      case "auth/wrong-password":
+        return "Invalid password.";
+      default:
+        return "An error occurred. Please try again.";
+    }
   };
 
   return (

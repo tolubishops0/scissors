@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import blueLink from "../../assets/blue-link.svg";
 import blueline from "../../assets/blue-line.svg";
 import menu from "../../assets/menu.svg";
+import user from "../../assets/user.png";
 
 import { auth } from "../../firebase/config";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import { toast } from "react-toastify";
 // import { ToastContainer, toast } from "react-toastify";
@@ -27,7 +28,7 @@ function NavBar({}: Props) {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [isLoginPage, setIsLoginPage] = useState(false);
+  const [userName, setUserName] = useState(" ");
 
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth <= 940);
@@ -71,10 +72,21 @@ function NavBar({}: Props) {
     // Check if the user is logged in based on the URL
     const loggedIn = location.pathname === "/urlpage";
     setIsLoggedIn(loggedIn);
-
-    const loginPage = location.pathname === "/login";
-    setIsLoginPage(loginPage);
   }, [location.pathname]);
+
+  //monitor signed in user
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log(user.displayName);
+        setUserName(user.displayName || "");
+        // ...
+      } else {
+        setUserName("");
+      }
+    });
+  }, []);
 
   return (
     <nav>
@@ -110,44 +122,57 @@ function NavBar({}: Props) {
               : "max-h-0 transition-all duration-500"
           } overflow-hidden text-left`}>
           <ul className="bg-primaryTextColorBlue text-white font-semibold">
-            <li className="py-2 pl-3">
+            <li className="py-2 pl-3" onClick={handleLinkClick}>
               <a className="text-white " href="/">
                 My Urls
               </a>
             </li>
-            <li className="py-2 pl-3">
+            <li className="py-2 pl-3" onClick={handleLinkClick}>
               <a href="#features">Features</a>
             </li>
-            <li className="py-2 pl-3">
+            <li className="py-2 pl-3" onClick={handleLinkClick}>
               <a href="#sub">Pricing</a>
             </li>
-            <li className="py-2 pl-3">
+            <li className="py-2 pl-3" onClick={handleLinkClick}>
               <a href="#linkmodal">Analytics</a>
             </li>
-            <li className="py-2 pl-3">
-              <a href="#faq">FAQs</a>
+            <li className="py-2 pl-3" onClick={handleLinkClick}>
+              <a href="#faqs">FAQs</a>
             </li>
             <hr />
+            {isLoggedIn ? (
+              <li className="py-3 pl-3" onClick={logoutUser}>
+                <a className="text-white" href="/">
+                  Log out
+                </a>
+              </li>
+            ) : (
+              location.pathname !== "/urlpage" &&
+              location.pathname !== "/login" && (
+                <li className="py-3 pl-3" onClick={handleLinkClick}>
+                  <a className="text-white" href="/urlpage">
+                    Log in
+                  </a>
+                </li>
+              )
+            )}
 
-            <li className="py-3 pl-3" onClick={handleLinkClick}>
-              <a className="text-white" href="/urlpage">
-                Log in
-              </a>
-            </li>
-
-            <li className="py-3 pl-3" onClick={logoutUser}>
-              <a className="text-white" href="/">
-                Log out
-              </a>
-            </li>
-
-            <li className="py-3 pl-3" onClick={handleLinkClick}>
-              <a
-                className="border-0 bg-white px-3 py-2 rounded-full text-primaryTextColorBlue"
-                href="#linkmodal">
-                Try for free
-              </a>
-            </li>
+            {isLoggedIn ? (
+              <li className="py-3 pl-3">
+                <a className="text-white flex items-center" href="/">
+                  <img src={user} alt="user" />
+                  <p className=""> Hi, {userName ? userName : "user"}</p>
+                </a>
+              </li>
+            ) : (
+              <li className="py-3 pl-3" onClick={handleLinkClick}>
+                <a
+                  className="border-0 bg-white px-3 py-2 rounded-full text-primaryTextColorBlue"
+                  href="#linkmodal">
+                  Try for free
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       )}
@@ -181,7 +206,7 @@ function NavBar({}: Props) {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <a href="#faqs">FAQs</a>
+                <a href="#faqss">FAQs</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               {isLoggedIn ? (
@@ -208,14 +233,24 @@ function NavBar({}: Props) {
                   </li>
                 )
               )}
-
-              <li>
-                <a
-                  className="border-0 bg-primaryTextColorBlue px-3 py-2 rounded-full text-white"
-                  href="#linkmodal">
-                  Try for free
-                </a>
-              </li>
+              {isLoggedIn ? (
+                <li className="" onClick={logoutUser}>
+                  <a
+                    className="text-primaryTextColorBlue flex items-center font-semibold"
+                    href="#">
+                    <img src={user} alt="user" />
+                    <p className=""> Hi, {userName ? userName : "user"}</p>
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    className="border-0 bg-primaryTextColorBlue px-3 py-2 rounded-full text-white"
+                    href="#linkmodal">
+                    Try for free
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
