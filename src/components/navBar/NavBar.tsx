@@ -1,15 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import blueLink from "../../assets/blue-link.svg";
 import blueline from "../../assets/blue-line.svg";
 import menu from "../../assets/menu.svg";
 
+import { auth } from "../../firebase/config";
+import { signOut } from "firebase/auth";
+
+import { toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+import Loader from "../loader/Loader";
+
 type Props = {};
 
 function NavBar({}: Props) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [isLoginPage, setIsLoginPage] = useState(false);
 
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth <= 940);
@@ -23,6 +41,25 @@ function NavBar({}: Props) {
     setIsMenuOpen(false);
   };
 
+  const logoutUser = () => {
+    setIsLoading(true);
+
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setIsLoading(false);
+
+        toast.success("logged out successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+        setIsLoading(false);
+
+        toast.error(error.message);
+      });
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -30,8 +67,19 @@ function NavBar({}: Props) {
     };
   }, []);
 
+  useEffect(() => {
+    // Check if the user is logged in based on the URL
+    const loggedIn = location.pathname === "/urlpage";
+    setIsLoggedIn(loggedIn);
+
+    const loginPage = location.pathname === "/login";
+    setIsLoginPage(loginPage);
+  }, [location.pathname]);
+
   return (
     <nav>
+      {/* <ToastContainer /> */}
+      {isLoading && <Loader />}
       <div className="flex items-center justify-between p-3 lg:p-0">
         {isSmallScreen && (
           <>
@@ -65,7 +113,7 @@ function NavBar({}: Props) {
             <li className="py-2 pl-3">
               <a className="text-white " href="/">
                 My Urls
-             </a>
+              </a>
             </li>
             <li className="py-2 pl-3">
               <a href="#features">Features</a>
@@ -80,18 +128,25 @@ function NavBar({}: Props) {
               <a href="#faq">FAQs</a>
             </li>
             <hr />
+
             <li className="py-3 pl-3" onClick={handleLinkClick}>
-              <a className="text-white" href="/login">
+              <a className="text-white" href="/urlpage">
                 Log in
-             </a>
+              </a>
+            </li>
+
+            <li className="py-3 pl-3" onClick={logoutUser}>
+              <a className="text-white" href="/">
+                Log out
+              </a>
             </li>
 
             <li className="py-3 pl-3" onClick={handleLinkClick}>
               <a
                 className="border-0 bg-white px-3 py-2 rounded-full text-primaryTextColorBlue"
-                href="/">
+                href="#linkmodal">
                 Try for free
-             </a>
+              </a>
             </li>
           </ul>
         </div>
@@ -129,19 +184,37 @@ function NavBar({}: Props) {
                 <a href="#faqs">FAQs</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
+              {isLoggedIn ? (
+                //
+                <li className="group transition duration-300">
+                  <a
+                    onClick={logoutUser}
+                    className="text-primaryTextColorBlue"
+                    href="/">
+                    Log Out
+                  </a>
+                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
+                </li>
+              ) : (
+                location.pathname !== "/urlpage" &&
+                location.pathname !== "/login" && (
+                  <li
+                    className="group transition duration-300"
+                    onClick={handleLinkClick}>
+                    <a className="text-primaryTextColorBlue" href="/login">
+                      Log in
+                    </a>
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
+                  </li>
+                )
+              )}
 
-              <li className="group transition duration-300">
-                <a className="text-primaryTextColorBlue" href="/login">
-                  Log in
-               </a>
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
-              </li>
               <li>
                 <a
                   className="border-0 bg-primaryTextColorBlue px-3 py-2 rounded-full text-white"
                   href="#linkmodal">
                   Try for free
-               </a>
+                </a>
               </li>
             </ul>
           </div>

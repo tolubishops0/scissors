@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
+import { useState } from "react";
+
 import NavBar from "./components/navBar/NavBar";
 // import LandingPage from "./components/landingPage/LandingPage";
 // import Feature from "./components/faeture/Feature";
@@ -14,9 +16,17 @@ import SignUp from "./components/auth/SignUp";
 import Homepage from "./components/homepage/Homepage";
 import Reset from "./components/auth/Reset";
 
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import UrlShort from "./components/urlshort/UrlShort";
+
+
 function App() {
+
   return (
     <Router>
+      <ToastContainer />
+      
       <NavBar />
 
       <Routes>
@@ -24,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/urlpage" element={<UrlShort />} />
       </Routes>
       <Footer />
     </Router>
