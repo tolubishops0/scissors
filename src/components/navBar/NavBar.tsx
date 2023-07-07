@@ -79,7 +79,6 @@ function NavBar({}: Props) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        console.log(user.displayName);
         setUserName(user.displayName || "");
         // ...
       } else {

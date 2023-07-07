@@ -18,7 +18,7 @@ import Reset from "./components/auth/Reset";
 
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import UrlShort from "./components/urlshort/UrlShort";
+import UrlShort from "./components/urlshortner/UrlShortner";
 
 
 function App() {
