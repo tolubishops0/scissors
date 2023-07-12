@@ -17,7 +17,6 @@ const UrlShortner = () => {
 
       const shortenedUrl = response.data;
       setShortenedUrl(shortenedUrl);
-      console.log(shortenedUrl);
     } catch (error) {
       console.error("Error shortening URL:", error);
     }

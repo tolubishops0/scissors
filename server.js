@@ -13,7 +13,7 @@ app.get("/shorten", (req, res) => {
 
   urls[id] = url;
 
-  res.send(`http://localhost:3000/${id}`);
+  res.send(`http://url/${id}`);
 });
 
 app.get("/:id", (req, res) => {
