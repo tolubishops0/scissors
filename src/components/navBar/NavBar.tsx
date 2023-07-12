@@ -141,17 +141,17 @@ function NavBar({}: Props) {
             <hr />
             {isLoggedIn ? (
               <li className="py-3 pl-3" onClick={logoutUser}>
-                <a className="text-white" href="/">
+                <Link className="text-white" to="/">
                   Log out
-                </a>
+                </Link>
               </li>
             ) : (
               location.pathname !== "/urlpage" &&
               location.pathname !== "/login" && (
                 <li className="py-3 pl-3" onClick={handleLinkClick}>
-                  <a className="text-white" href="/login">
+                  <Link className="text-white" to="/login">
                     Log in
-                  </a>
+                  </Link>
                 </li>
               )
             )}
@@ -211,12 +211,12 @@ function NavBar({}: Props) {
               {isLoggedIn ? (
                 //
                 <li className="group transition duration-300">
-                  <a
+                  <Link
                     onClick={logoutUser}
                     className="text-primaryTextColorBlue"
-                    href="/">
+                    to="/">
                     Log Out
-                  </a>
+                  </Link>
                   <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
                 </li>
               ) : (
@@ -225,9 +225,9 @@ function NavBar({}: Props) {
                   <li
                     className="group transition duration-300"
                     onClick={handleLinkClick}>
-                    <a className="text-primaryTextColorBlue" href="/login">
+                    <Link className="text-primaryTextColorBlue" to="/login">
                       Log in
-                    </a>
+                    </Link>
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
                   </li>
                 )
