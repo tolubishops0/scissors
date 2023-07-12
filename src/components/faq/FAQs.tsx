@@ -30,25 +30,28 @@ function FAQs({ faqs }: Props) {
 
       <div className="md:py-6">
         {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className={`faq-item ${
-              activeIndex === index ? "active" : ""
-            } w-[90%] mx-auto mt-5`}>
+          <>
             <div
-              className="font-semibold text-sm md:text-lg flex items-center justify-between cursor-pointer"
-              onClick={() => toggleAccordion(index)}>
-              <h3>{faq.question}</h3>
-              <button>
-                <img src={plus} alt="plus" className="w-6" />
-              </button>
-            </div>
-            {activeIndex === index && (
-              <div className="font-normal text-xs md:text-base m-2 text-justify">
-                <p>{faq.answer}</p>
+              key={index}
+              className={`faq-item ${
+                activeIndex === index ? "active" : ""
+              } w-[90%] mx-auto mt-5`}>
+              <div
+                className="font-semibold text-sm md:text-lg flex items-center justify-between cursor-pointer"
+                onClick={() => toggleAccordion(index)}>
+                <h3>{faq.question}</h3>
+                <button>
+                  <img src={plus} alt="plus" className="w-6" />
+                </button>
               </div>
-            )}
-          </div>
+              {activeIndex === index && (
+                <div className="font-normal text-xs md:text-base m-2 text-justify">
+                  <p>{faq.answer}</p>
+                </div>
+              )}{" "}
+            </div>{" "}
+            <hr />
+          </>
         ))}
       </div>
     </div>

@@ -95,9 +95,9 @@ function NavBar({}: Props) {
         {isSmallScreen && (
           <>
             <div className="flex items-center gap-1 max-w-sm">
-              <img src={blueLink} alt="blueLink" />
-              <img src={blueline} alt="blueline" />
-              <p className="uppercase text-sm font-extrabold text-primaryTextColorBlue">
+              <img src={blueLink} alt="blueLink" className="w-[15%]" />
+              <img src={blueline} alt="blueline" className="w-[2%]" />
+              <p className="uppercase text-xs md:text-sm font-extrabold text-primaryTextColorBlue">
                 scissor
               </p>
             </div>
@@ -149,7 +149,7 @@ function NavBar({}: Props) {
               location.pathname !== "/urlpage" &&
               location.pathname !== "/login" && (
                 <li className="py-3 pl-3" onClick={handleLinkClick}>
-                  <a className="text-white" href="/urlpage">
+                  <a className="text-white" href="/login">
                     Log in
                   </a>
                 </li>
@@ -205,7 +205,7 @@ function NavBar({}: Props) {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               <li className="group transition duration-300">
-                <a href="#faqss">FAQs</a>
+                <a href="#faqs">FAQs</a>
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primaryTextColorBlue"></span>
               </li>
               {isLoggedIn ? (

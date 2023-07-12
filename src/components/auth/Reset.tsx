@@ -58,7 +58,7 @@ function Reset({}: Props) {
                 <Link to="/login"> - Log In</Link>{" "}
               </p>
               <p>
-                <Link to="/register"> - Register </Link>{" "}
+                <Link to="/signup"> - Sign Up </Link>{" "}
               </p>
             </div>
           </form>
